@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVER PUERTO 3001</title>
+</head>
+<body>
+    <h1>SERVIDOR 3000 INICIADO</h1>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on('connect', function() {
+            console.log('conectado al servidor')
+        });
+        socket.on('disconnect', function() {
+            console.log('desconectado al servidor')
+        });
+        
+        socket.emit('mensaje', {nombre: 'robert'});
+        
+        socket.on('mensaje', function(payload){
+            console.log('Esuchando', payload);
+        });
+
+    </script>
+</body>
+</html>
